@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Resources | Secondary School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #f8f9fa;
+            padding: 1rem 0;
+            border-bottom: 3px solid #8b0000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #8b0000;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8b0000;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #8b0000 0%, #c41e3a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #8b0000;
+            margin-bottom: 2rem;
+            border-left: 5px solid #8b0000;
+            padding-left: 1rem;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid #8b0000;
+            background: white;
+            color: #8b0000;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #8b0000;
+            color: white;
+        }
+
+        .tab-btn:hover {
+            background: #8b0000;
+            color: white;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .template-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.2);
+        }
+
+        .template-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .template-card h3 {
+            color: #8b0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .template-meta {
+            background: #f8f9fa;
+            padding: 0.7rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            background: #8b0000;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #a50000;
+        }
+
+        .featured {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid #8b0000;
+        }
+
+        .featured h3 {
+            color: #8b0000;
+            margin-bottom: 1rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .featured-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .featured-item strong {
+            color: #8b0000;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border-left: 5px solid #8b0000;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
+
+        .instructions h3 {
+            color: #8b0000;
+            margin-bottom: 1rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #8b0000;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            color: #666;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #8b0000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            background: #8b0000;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #a50000;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .resource-badge {
+            display: inline-block;
+            background: #8b0000;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: #e8f4f8;
+            border-left: 5px solid #8b0000;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">📚 Secondary School</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Download Resources & Materials</h1>
+        <p>Access coding templates, assignments, lecture notes, and comprehensive study materials</p>
+    </div>
+
+    <div class="container">
+        <!-- Section 1: Resource Categories -->
+        <section>
+            <h2 class="section-title">Available Resources</h2>
+            <div class="info-box">
+                📥 All resources are free for enrolled students. Download materials to support your learning journey.
+            </div>
+
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="switchTab('templates')">Coding Templates</button>
+                <button class="tab-btn" onclick="switchTab('assignments')">Assignments</button>
+                <button class="tab-btn" onclick="switchTab('lectures')">Lecture Notes</button>
+                <button class="tab-btn" onclick="switchTab('exams')">Past Exams</button>
+                <button class="tab-btn" onclick="switchTab('projects')">Project Files</button>
+                <button class="tab-btn" onclick="switchTab('study')">Study Guides</button>
+            </div>
+
+            <!-- Coding Templates Tab -->
+            <div id="templates" class="tab-content active">
+                <h3 style="color: #8b0000; margin-top: 2rem; margin-bottom: 1rem;">💻 Coding Templates</h3>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-icon">🐍</div>
+                        <div class="resource-badge">Beginner</div>
+                        <h3>Python Basics Template</h3>
+                        <p>Complete starter template with essential Python concepts and best practices</p>
+                        <div class="template-meta">📦 Size: 2.5 MB | 📋 Updated: Jan 2025</div>
+                        <button class="download-btn">⬇ Download (ZIP)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">☕</div>
+                        <div class="resource-badge">Intermediate</div>
+                        <h3>Java Fundamentals Template</h3>
+                        <p>Object-oriented programming template with class structure and methods</p>
+                        <div class="template-meta">📦 Size: 3.2 MB | 📋 Updated: Jan 2025</div>
+                        <button class="download-btn">⬇ Download (ZIP)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🌐</div>
+                        <div class="resource-badge">Beginner</div>
+                        <h3>Web Development Boilerplate</h3>
+                        <p>HTML, CSS, and JavaScript boilerplate for responsive websites</p>
+                        <div class="template-meta">📦 Size: 1.8 MB | 📋 Updated: Jan 2025</div>
+                        <button class="download-btn">⬇ Download (ZIP)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">⚙️</div>
+                        <div class="resource-badge">Advanced</div>
+                        <h3>C++ Advanced Template</h3>
+                        <p>Data structures and algorithms template for competitive programming</p>
+                        <div class="template-meta">📦 Size: 4.1 MB | 📋 Updated: Jan 2025</div>
+                        <button class="download-btn">⬇ Download (ZIP)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignments Tab -->
+            <div id="assignments" class="tab-content">
+                <h3 style="color: #8b0000; margin-top: 2rem; margin-bottom: 1rem;">📝 Coding Assignments</h3>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-icon">📋</div>
+                        <div class="resource-badge">Week 1-2</div>
+                        <h3>Variables & Data Types</h3>
+                        <p>10 coding problems covering variables, data types, and type conversion</p>
+                        <div class="template-meta">📦 5 Questions | ⏱️ 2 hours | Difficulty: Easy</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🔄</div>
+                        <div class="resource-badge">Week 3-4</div>
+                        <h3>Loops & Conditionals</h3>
+                        <p>15 assignments on if-else statements, for loops, while loops</p>
+                        <div class="template-meta">📦 15 Questions | ⏱️ 3 hours | Difficulty: Intermediate</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🔧</div>
+                        <div class="resource-badge">Week 5-6</div>
+                        <h3>Functions & Modules</h3>
+                        <p>12 assignments on function creation, parameters, and return values</p>
+                        <div class="template-meta">📦 12 Questions | ⏱️ 2.5 hours | Difficulty: Intermediate</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">📊</div>
+                        <div class="resource-badge">Week 7-8</div>
+                        <h3>Data Structures</h3>
+                        <p>20 assignments on arrays, lists, dictionaries, and sets</p>
+                        <div class="template-meta">📦 20 Questions | ⏱️ 4 hours | Difficulty: Hard</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🎯</div>
+                        <div class="resource-badge">Week 9-10</div>
+                        <h3>Object-Oriented Programming</h3>
+                        <p>18 assignments on classes, objects, inheritance, and polymorphism</p>
+                        <div class="template-meta">📦 18 Questions | ⏱️ 4 hours | Difficulty: Hard</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">💡</div>
+                        <div class="resource-badge">Capstone</div>
+                        <h3>Capstone Project</h3>
+                        <p>Build a complete project combining all learned concepts</p>
+                        <div class="template-meta">📦 Project Brief | ⏱️ 2 weeks | Difficulty: Very Hard</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Notes Tab -->
+            <div id="lectures" class="tab-content">
+                <h3 style="color: #8b0000; margin-top: 2rem; margin-bottom: 1rem;">📖 Lecture Notes</h3>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-icon">📚</div>
+                        <div class="resource-badge">Computer Science</div>
+                        <h3>Introduction to Programming</h3>
+                        <p>Comprehensive notes on programming fundamentals and best practices</p>
+                        <div class="template-meta">📦 45 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">💾</div>
+                        <div class="resource-badge">Computer Science</div>
+                        <h3>Database Design & SQL</h3>
+                        <p>Detailed notes on database concepts, normalization, and SQL queries</p>
+                        <div class="template-meta">📦 38 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🌐</div>
+                        <div class="resource-badge">Computer Science</div>
+                        <h3>Web Development Essentials</h3>
+                        <p>Complete guide to HTML, CSS, JavaScript, and responsive design</p>
+                        <div class="template-meta">📦 52 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">📊</div>
+                        <div class="resource-badge">Mathematics</div>
+                        <h3>Algorithm & Complexity Analysis</h3>
+                        <p>In-depth notes on Big O notation, time/space complexity analysis</p>
+                        <div class="template-meta">📦 42 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🔐</div>
+                        <div class="resource-badge">Computer Science</div>
+                        <h3>Cybersecurity Basics</h3>
+                        <p>Essential cybersecurity concepts, threats, and protection strategies</p>
+                        <div class="template-meta">📦 35 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🤖</div>
+                        <div class="resource-badge">Advanced</div>
+                        <h3>Introduction to AI & Machine Learning</h3>
+                        <p>Comprehensive notes on AI concepts, algorithms, and practical applications</p>
+                        <div class="template-meta">📦 48 pages | 📋 Complete Course</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Exams Tab -->
+            <div id="exams" class="tab-content">
+                <h3 style="color: #8b0000; margin-top: 2rem; margin-bottom: 1rem;">📝 Past Examination Papers</h3>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-icon">✅</div>
+                        <div class="resource-badge">2024</div>
+                        <h3>JAMB CBT Practice Tests</h3>
+                        <p>4 complete JAMB-style practice tests with detailed solutions</p>
+                        <div class="template-meta">📦 160 Questions | ⏱️ 4 papers | Solutions Included</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">🎯</div>
+                        <div class="resource-badge">2024</div>
+                        <h3>WAEC Past Papers - CS</h3>
+                        <p>WAEC Computer Science papers from 2020-2024 with marking schemes</p>
+                        <div class="template-meta">📦 5 Years | 📋 With Solutions</div>
+                        <button class="download-btn">⬇ Download (PDF)</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">📋</div>
+                        <div class="resource-badge">2024</div>
+                        <h3>NECO Examination Papers</h3>
+                     
